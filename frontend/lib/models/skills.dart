@@ -1,20 +1,41 @@
 import 'package:flutterproject/models/users.dart';
 
 class SkillModel {
-  final int id;
-  String skillName;
-  String category;
-  String description;
-  double price;
-  UserModel provider;
-  bool isMine=false;
+  final String id;
+  final String title;
+  final String description;
+  final String category;
+  final String? imageUrl;
+  final UserModel requester;
+  final bool isMine;
 
-  SkillModel({
+  const SkillModel({
     required this.id,
-    required this.skillName,
-    required this.category,
+    required this.title,
     required this.description,
-    required this.price,
-    required this.provider,
+    required this.category,
+    this.imageUrl,
+    required this.requester,
+    this.isMine = false,
   });
+
+  SkillModel copyWith({
+    String? id,
+    String? title,
+    String? description,
+    String? category,
+    String? imageUrl,
+    UserModel? requester,
+    bool? isMine,
+  }) {
+    return SkillModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      category: category ?? this.category,
+      imageUrl: imageUrl ?? this.imageUrl,
+      requester: requester ?? this.requester,
+      isMine: isMine ?? this.isMine,
+    );
+  }
 }
